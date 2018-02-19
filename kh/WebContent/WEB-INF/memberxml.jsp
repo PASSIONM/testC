@@ -1,12 +1,11 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <html>
 <head>
 <title>Home</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="resources/css/bootstrap.css" />
-<link rel="stylesheet" href="resources/css/w3.css" />
+<link rel="stylesheet" href="css/bootstrap.css" />
+<link rel="stylesheet" href="css/w3.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="jquery.fullPage.css" />
 
@@ -45,7 +44,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 
-	<script type="text/javascript" src="resources/js/jquery.fullPage.js"></script>
+	<script type="text/javascript" src="js/jquery.fullPage.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			//홈페이지 접속시 글들을 해당 아이디, 클래스의 내용을 숨김
