@@ -33,7 +33,7 @@
 							<li><a class="gn-icon gn-icon-archive sub_main1">공지사항</a>
 								<ul class="gn-submenu sub_1">
 									<li><a class="gn-icon gn-icon-article">공지사항</a></li>
-									<li><a class="gn-icon gn-icon-pictures">이벤트</a></li>
+									<li><a class="gn-icon gn-icon-pictures">자유게시판</a></li>
 								</ul>
 							</li>
 							<li><a class="gn-icon gn-icon-cog sub_main2">업소관리</a>
@@ -42,13 +42,13 @@
 									<li><a class="gn-icon gn-icon-photoshop">운영정보 수정</a></li>
 									<li><a class="gn-icon gn-icon-photoshop">리뷰 등록/관리</a></li>
 									<li><a class="gn-icon gn-icon-photoshop">임시 운영 증지</a></li>
+									<li><a class="gn-icon gn-icon-photoshop">문의사항 관리</a></li>
 								</ul>
 							</li>
 							<li><a class="gn-icon gn-icon-cog sub_main3">사용자관리</a>
 								<ul class="gn-submenu sub_3">
 									<li><a class="gn-icon gn-icon-illustrator">비밀번호변경</a></li>
 									<li><a class="gn-icon gn-icon-photoshop">회원정보수정</a></li>
-									<li><a class="gn-icon gn-icon-photoshop">내 채팅내역</a></li>
 									<li><a class="gn-icon gn-icon-photoshop">내 문의내역</a></li>
 								</ul>
 							</li>
