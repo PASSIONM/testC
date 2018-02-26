@@ -15,7 +15,7 @@ public class MainController {
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String home( Model model) {
 		
-		return "main";
+		return "provider_join";
 	}
 	
 }
