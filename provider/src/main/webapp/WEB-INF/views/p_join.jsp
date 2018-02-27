@@ -20,15 +20,15 @@
                     <p class="list-group-item-text">First step description</p>
                 </a></li>
                 <li class="disabled"><a href="#step-2">
-                    <h4 class="list-group-item-heading">개인정보</h4>
+                    <h4 class="list-group-item-heading">본인확인</h4>
                     <p class="list-group-item-text">Second step description</p>
                 </a></li>
                 <li class="disabled"><a href="#step-3">
-                    <h4 class="list-group-item-heading">사업자정보</h4>
+                    <h4 class="list-group-item-heading">개인정보</h4>
                     <p class="list-group-item-text">Third step description</p>
                 </a></li>
                 <li class="disabled"><a href="#step-4">
-                    <h4 class="list-group-item-heading">Step 4</h4>
+                    <h4 class="list-group-item-heading">사업자정보</h4>
                     <p class="list-group-item-text">Third step description</p>
                 </a></li>
             </ul>
@@ -45,7 +45,7 @@
     <div class="row setup-content" id="step-2">
         <div class="col-xs-12">
             <div class="col-md-12 well text-center">
-                <h1 class="text-center"> 개인정보</h1>
+                <h1 class="text-center">본인확인</h1>
                 <button id="prev-1" class="btn btn-primary btn-lg">prev</button>
                 <button id="next-3" class="btn btn-primary btn-lg">next</button>
             </div>
@@ -54,7 +54,7 @@
     <div class="row setup-content" id="step-3">
         <div class="col-xs-12">
             <div class="col-md-12 well text-center">
-                <h1 class="text-center"> 사업자정보</h1>
+                <h1 class="text-center">개인정보</h1>
                 <button id="prev-2" class="btn btn-primary btn-lg">prev</button>
                 <button id="next-4" class="btn btn-primary btn-lg">next</button>
             </div>
@@ -63,7 +63,7 @@
     <div class="row setup-content" id="step-4">
         <div class="col-xs-12">
             <div class="col-md-12 well text-center">
-                <h1 class="text-center"> STEP 4</h1>
+                <h1 class="text-center">사업자정보</h1>
                 <button id="prev-3" class="btn btn-primary btn-lg">prev</button>
                 <input type="submit" class="btn btn-primary btn-lg" value="회원가입" />
             </div>
