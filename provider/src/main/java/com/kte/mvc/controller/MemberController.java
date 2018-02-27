@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application home page.
  */
 @Controller
-public class MainController {
+public class MemberController {
 	
 
-	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
-	public String home( Model model) {
+	@RequestMapping(value = "/provider_join.do", method = RequestMethod.GET)
+	public String provider_join( Model model) {
 		
-		return "main";
+		return "p_join";
 	}
 	
 }
