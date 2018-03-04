@@ -245,7 +245,6 @@
 	overflow: hidden;
 	vertical-align: middle;
 	background-size: 265px auto;
-	background-image: url("/mobile/main/sp-main.png");
 }
 
 .sp-more::after {

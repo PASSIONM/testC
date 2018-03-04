@@ -115,8 +115,8 @@
 									<a href="#" class="btn-more sp-more">업소관리 바로가기</a>
 								</div>
 								<ul class="list">
+									<li><a href="store_insert.do" class="sp-item-soldout">업소 등록</a></li>
 									<li><a href="#" class="sp-item-review">리뷰 등록/관리</a></li>
-									<li><a href="#" class="sp-item-soldout">메뉴품절 관리</a></li>
 									<li><a href="#" class="sp-item-closing">임시 운영 중지</a></li>
 									<li><a href="#" class="sp-item-operate">운영정보 수정</a></li>
 								</ul>
