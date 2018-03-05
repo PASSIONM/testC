@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8" />
-	<title>회원가입</title>
+	<title>test</title>
 	<link rel="stylesheet" href="css/w3.css" />
 </head>
 
