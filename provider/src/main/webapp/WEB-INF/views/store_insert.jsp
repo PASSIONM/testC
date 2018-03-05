@@ -38,11 +38,15 @@
 	    <div class="row setup-content" id="step-1">
 	        <div class="col-xs-12">
 	            <div class="col-md-12 well">
-	                <h1>사업자정보</h1>
+	                <h2>사업자정보</h2>
+	                <div class="form-inline">
+						<input type="radio" id="" name="company_class" value="default" checked="checked" /> 기존업체
+						<input type="radio" id="" name="company_class" value="new"  /> 신규업체
+					</div>
 	                <hr />
 	                <form id="form"  class="form-horizontal">
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="company_name">회사명</label>
+							<label class="col-sm-4 control-label" for="company_name">상호명</label>
 							<div class="col-sm-5">
 							<input type="text" class="form-control" id="id" name="id" placeholder="회사명을 입력하세요" />
 						</div>
@@ -52,8 +56,8 @@
 							<label class="col-sm-4 control-label" for="company_class">사업자분류</label>
 							<div class="col-sm-5">
 								<div class="form-inline">
-									<input type="radio" id="company_class" name="company_class" value="individual" checked="checked" /> 개인
-									<input type="radio" id="company_class" name="company_class" value="corporations"  /> 법인
+									<input type="radio" id="" name="company_class" value="individual" checked="checked" /> 개인
+									<input type="radio" id="" name="company_class" value="corporations"  /> 법인
 								</div>
 							</div>
 						</div>
@@ -91,17 +95,11 @@
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="addr">사업장 주소</label>
 							<div class="col-sm-5">
-									<input type="button" class="btn btn-info" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
-									<input style="margin-top:10px" type="text" class="form-control" id="sample5_address" placeholder="주소" readonly>
-									
-									<div id="map" style="width:100%;height:300px;margin-top:10px;display:none"></div>
-								
+								<input type="button" class="btn btn-info" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+								<input style="margin-top:10px" type="text" class="form-control" id="sample5_address" placeholder="주소" readonly>
+								<div id="map" style="width:100%;height:300px;margin-top:10px;display:none"></div>
 							</div>
 						</div>
-						
-						
-						
-						
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="business_license">사업자 등록증</label>
 							<div class="col-sm-5">
