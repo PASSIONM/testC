@@ -1,8 +1,0 @@
-@charset "UTF-8";
-
-.box600{
-				width:1000px;	/*가로길이*/
-				border:1px solid #cccccc;	/*테두리*/
-				padding:20px;		/*안쪽으로 20xp밀기*/
-				margin:30px auto 0px auto;	/*중앙정렬*/
-}
