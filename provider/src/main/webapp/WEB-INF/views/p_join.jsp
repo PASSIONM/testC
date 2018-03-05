@@ -113,12 +113,34 @@
 	    </div>
 	    <div class="row setup-content" id="step-2">
 	        <div class="col-xs-12">
-	            <div class="col-md-12 well text-center">
+	            <div class="col-md-12 well">
 	                <h1 class="text-center">본인확인</h1>
 	                <hr />
-	                <button id="prev-1" class="btn btn-primary btn-lg">prev</button>
-	                <button id="next-3" class="btn btn-primary btn-lg">next</button>
-	            </div>
+	                <form name="auth" class="form-horizontal" action="emailAuth.do" target="emailAuth">
+	                	<div class="form-group">
+							<label class="col-sm-4 control-label" for="email">본인확인</label>
+							<div class="col-sm-5">
+								<div class="form-inline">
+									<input type="text" class="form-control" id="email" name="email" placeholder="이메일 주소를 입력하세요" />
+									<input type="button" class="btn btn-info" value="이메일 인증" onClick="openAuth()">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label"></label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" name="emailauth" readonly>
+							</div>
+						</div>
+	                	<!-- <input type="text" class="form-control" name="email" />
+	                	<input type="button" class="btn btn-info" value="이메일 인증" onClick="openAuth()">
+	                	<input type="text" class="form-control" name="emailauth"> -->
+	                </form>
+	                <div align="center">
+		                <button id="prev-1" class="btn btn-primary btn-lg">prev</button>
+		                <button id="next-3" class="btn btn-primary btn-lg">next</button>
+		            </div>
+				</div>	
 	        </div>
 	    </div>
 	    <div class="row setup-content" id="step-3">
@@ -126,7 +148,7 @@
 	            <div class="col-md-12 well">
 	                <h1>개인정보</h1>
 	                <hr />
-	                	<form id="form"  class="form-horizontal">
+	                	<form id="form_i"  class="form-horizontal">
 							<div class="form-group">
 								<label class="col-sm-4 control-label" for="id">아이디</label>
 								<div class="col-sm-5">
@@ -171,29 +193,6 @@
 									</div>
 								</div>
 							</div>
-							
-							<div class="form-group">
-								<label class="col-sm-4 control-label" for="addr">주소</label>
-								<div class="col-sm-5">
-									<div class="form-inline post_search">
-										<input type="text" name="postcode" class="form-control" id="sample6_postcode" readonly/>
-										<input type="button" class="btn btn-danger" onclick="sample6_execDaumPostcode()" name="post_search" id="post_search" value="검색" />
-									</div>
-								</div>
-							</div>
-							
-							<div class="form-group">
-								<label class="col-sm-4 control-label" ></label>
-								<div class="col-sm-5">
-									<input type="text" class="form-control" id="sample6_address" name="addr1" placeholder="상세주소1" readonly/>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-4 control-label" ></label>
-								<div class="col-sm-5">
-									<input type="text" class="form-control" id="sample6_address2" name="addr2" placeholder="상세주소2" />
-								</div>
-							</div>
 						</form>
 					<div align="center">
 						<button id="prev-2" class="btn btn-primary btn-lg">prev</button>
@@ -207,11 +206,11 @@
 	            <div class="col-md-12 well">
 	                <h1>사업자정보</h1>
 	                <hr />
-	                <form id="form"  class="form-horizontal">
+	                <form id="form_c"  class="form-horizontal">
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="company_name">회사명</label>
+							<label class="col-sm-4 control-label" for="company_name">상호명</label>
 							<div class="col-sm-5">
-							<input type="text" class="form-control" id="id" name="id" placeholder="회사명을 입력하세요" />
+							<input type="text" class="form-control" id="company_name" name="company_name" placeholder="회사명을 입력하세요" />
 						</div>
 							
 						</div>
@@ -219,15 +218,15 @@
 							<label class="col-sm-4 control-label" for="company_class">사업자분류</label>
 							<div class="col-sm-5">
 								<div class="form-inline">
-									<input type="radio" id="company_class" name="company_class" value="individual" checked="checked" /> 개인
-									<input type="radio" id="company_class" name="company_class" value="corporations"  /> 법인
+									<input type="radio" name="company_class" value="individual" checked="checked" /> 개인
+									<input type="radio" name="company_class" value="corporations"  /> 법인
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="company_num">사업자 등록번호</label>
+							<label class="col-sm-4 control-label" for="company_no">사업자 등록번호</label>
 							<div class="col-sm-5">
-								<input type="text" class="form-control" id="company_num" name="company_num" placeholder="사업자 등록번호를 입력하세요" />
+								<input type="text" class="form-control" id="company_no" name="company_no" placeholder="사업자 등록번호를 입력하세요" />
 							</div>
 						</div>
 						<div class="form-group">
@@ -249,70 +248,20 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="manager_name">담당자명</label>
+							<label class="col-sm-4 control-label" for="company_tel">대표 전화번호</label>
 							<div class="col-sm-5">
-								<input type="text" class="form-control" id="manager_name" name="manager_name" placeholder="담당자명을 입력하세요" />
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-4 control-label" for="manager_dept">담당자 부서명</label>
-							<div class="col-sm-5">
-								<input type="text" class="form-control" id="manager_dept" name="manager_dept" placeholder="담당자 부서명을 입력하세요" />
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-4 control-label" for="company_url">홈페이지 URL</label>
-							<div class="col-sm-5">
-								<input type="text" class="form-control" id="company_url" name="company_url" placeholder="홈페이지 URL을 입력하세요" />
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-4 control-label" for="company_tel">회사 전화</label>
-							<div class="col-sm-5">
-								<input type="text" class="form-control" id="company_url" name="company_url" placeholder="회사 전화번호를 입력하세요" />
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="col-sm-4 control-label" for="tel1">전화번호</label>
-							<div class="col-sm-5">
-								<div class="form-inline">
-									<select class="form-control" name="tel1" id="tel1">
-										<option>선택</option>
-										<option>010</option>
-										<option>011</option>
-									</select>
-									<label>-</label>
-									<input type="text" style="width:80px" name="tel2" id="tel2" class="form-control" />
-									<label>-</label>
-									<input type="text" style="width:80px" name="tel3" id="tel3" class="form-control" />
-								</div>
+								<input type="text" class="form-control" id="company_tel" name="company_tel" placeholder="회사 전화번호를 입력하세요" />
 							</div>
 						</div>
 						
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="addr">사업장 주소</label>
 							<div class="col-sm-5">
-								<div class="form-inline post_search">
-									<input type="text" name="postcode" class="form-control" id="sample6_postcode" readonly/>
-									<input type="button" class="btn btn-danger" onclick="sample6_execDaumPostcode()" name="post_search" id="post_search" value="검색" />
-								</div>
+								<input type="button" class="btn btn-info" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+								<input style="margin-top:10px" type="text" class="form-control" id="sample5_address" placeholder="주소" readonly>
+								<div id="map" style="width:100%;height:300px;margin-top:10px;display:none"></div>
 							</div>
 						</div>
-						
-						<div class="form-group">
-							<label class="col-sm-4 control-label" ></label>
-							<div class="col-sm-5">
-								<input type="text" class="form-control" id="sample6_address" name="addr1" placeholder="상세주소1" readonly/>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-4 control-label" ></label>
-							<div class="col-sm-5">
-								<input type="text" class="form-control" id="sample6_address2" name="addr2" placeholder="상세주소2" />
-							</div>
-						</div>
-						
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="business_license">사업자 등록증</label>
 							<div class="col-sm-5">
@@ -341,6 +290,8 @@
 	
 	<script src="resources/js/jquery-1.11.1.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2028d6af91e6cdd61e23fc95d8e4dcf4&libraries=services"></script>
 	<script>
 		$(document).ready(function() {
 		    
@@ -388,6 +339,93 @@
 		        $('ul.setup-panel li a[href="#step-3"]').trigger('click');
 		    });
 		});
+		
+		function openAuth() {
+			window.open('about:blank','emailAuth','width=400,height=300');
+			auth.submit();
+		}
+		
+		
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+            level: 5 // 지도의 확대 레벨
+        };
+
+	    //지도를 미리 생성
+	    var map = new daum.maps.Map(mapContainer, mapOption);
+	    //주소-좌표 변환 객체를 생성
+	    var geocoder = new daum.maps.services.Geocoder();
+	    //마커를 미리 생성
+	    var marker = new daum.maps.Marker({
+	        position: new daum.maps.LatLng(37.537187, 127.005476),
+	        map: map
+	    });
+	 	// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+	    var mapTypeControl = new daum.maps.MapTypeControl();
+
+	    // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+	    // daum.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+	    map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
+
+	    // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+	    var zoomControl = new daum.maps.ZoomControl();
+	    map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+
+
+	    function sample5_execDaumPostcode() {
+	        new daum.Postcode({
+	            oncomplete: function(data) {
+	                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+	                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	                var fullAddr = data.address; // 최종 주소 변수
+	                var extraAddr = ''; // 조합형 주소 변수
+	
+	                // 기본 주소가 도로명 타입일때 조합한다.
+	                if(data.addressType === 'R'){
+	                    //법정동명이 있을 경우 추가한다.
+	                    if(data.bname !== ''){
+	                        extraAddr += data.bname;
+	                    }
+	                    // 건물명이 있을 경우 추가한다.
+	                    if(data.buildingName !== ''){
+	                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                    }
+	                    // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+	                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+	                }
+	
+	                // 주소 정보를 해당 필드에 넣는다.
+	                document.getElementById("sample5_address").value = fullAddr;
+	                // 주소로 상세 정보를 검색
+	                geocoder.addressSearch(data.address, function(results, status) {
+	                    // 정상적으로 검색이 완료됐으면
+	                    if (status === daum.maps.services.Status.OK) {
+	
+	                        var result = results[0]; //첫번째 결과의 값을 활용
+	
+	                        // 해당 주소에 대한 좌표를 받아서
+	                        var coords = new daum.maps.LatLng(result.y, result.x);
+	                        // 지도를 보여준다.
+	                        mapContainer.style.display = "block";
+	                        map.relayout();
+	                        
+	                        // 결과값으로 받은 위치를 마커로 표시합니다
+	                        var marker = new daum.maps.Marker({
+	                            map: map,
+	                            position: coords
+	                        });
+	                        
+	                        // 지도 중심을 변경한다.
+	                        map.setCenter(coords);
+	                        // 마커를 결과값으로 받은 위치로 옮긴다.
+	                        marker.setPosition(coords);
+	                    }
+	                });
+	            }
+	        }).open();
+	    }
 	</script>
+
 </body>
 </html>
