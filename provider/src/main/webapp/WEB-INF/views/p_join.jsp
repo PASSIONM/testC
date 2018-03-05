@@ -132,6 +132,7 @@
 								<input type="text" class="form-control" name="emailauth" readonly>
 							</div>
 						</div>
+						<div class="g-recaptcha" id ="grecaptcha" data-sitekey="6LdfiEoUAAAAANEiw_ZLNO_1pmL3fj-Ttt1rX44c"></div>
 	                	<!-- <input type="text" class="form-control" name="email" />
 	                	<input type="button" class="btn btn-info" value="이메일 인증" onClick="openAuth()">
 	                	<input type="text" class="form-control" name="emailauth"> -->
@@ -292,6 +293,7 @@
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2028d6af91e6cdd61e23fc95d8e4dcf4&libraries=services"></script>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
 	<script>
 		$(document).ready(function() {
 		    
@@ -424,6 +426,18 @@
 	                });
 	            }
 	        }).open();
+	    }
+	    
+	    function chkCaptcha() {
+	        if (typeof(grecaptcha) != 'undefined') {
+	           if (grecaptcha.getResponse() == "") {
+	               alert("스팸방지코드를 확인해 주세요.");
+	               return false;
+	           }
+	        }
+	        else {
+	             return false;
+	        }
 	    }
 	</script>
 
