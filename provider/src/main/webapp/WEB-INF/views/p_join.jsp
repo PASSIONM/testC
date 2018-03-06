@@ -132,10 +132,12 @@
 								<input type="text" class="form-control" name="emailauth" readonly>
 							</div>
 						</div>
-						<div class="g-recaptcha" id ="grecaptcha" data-sitekey="6LdfiEoUAAAAANEiw_ZLNO_1pmL3fj-Ttt1rX44c"></div>
-	                	<!-- <input type="text" class="form-control" name="email" />
-	                	<input type="button" class="btn btn-info" value="이메일 인증" onClick="openAuth()">
-	                	<input type="text" class="form-control" name="emailauth"> -->
+						<div class="form-group">
+							<label class="col-sm-4 control-label">자동가입 방지</label>
+							<div class="col-sm-5">
+								<div class="g-recaptcha" id ="grecaptcha" data-sitekey="6LdfiEoUAAAAANEiw_ZLNO_1pmL3fj-Ttt1rX44c"></div>
+							</div>
+						</div>
 	                </form>
 	                <div align="center">
 		                <button id="prev-1" class="btn btn-primary btn-lg">prev</button>

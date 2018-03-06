@@ -12,6 +12,22 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="resources/css/footer.css" />
 	<title>Insert title here</title>
+	<style type="text/css">
+        .imgs_wrap img {
+            height: 75px;
+		    border: 1px solid #000;
+		    margin: 10px 5px 0 0;
+        }
+        .my_button {
+            display: inline-block;
+            width: 150px;
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+</style>
+    
 </head>
 <body>
 	<%@ include file="nav.jsp" %>
@@ -29,7 +45,7 @@
 	                    <p class="list-group-item-text">Second step description</p>
 	                </a></li>
 	                <li class="disabled"><a href="#step-3">
-	                    <h4 class="list-group-item-heading">ㅁㅁ</h4>
+	                    <h4 class="list-group-item-heading">예약 관련</h4>
 	                    <p class="list-group-item-text">Third step description</p>
 	                </a></li>
 	            </ul>
@@ -127,17 +143,61 @@
 	                <h1 class="text-center">운영 정보</h1>
 	                <hr />
 	                <form id="form"  class="form-horizontal">
+						
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="id">아이디</label>
+							<label class="col-sm-4 control-label" for="category">카테고리</label>
 							<div class="col-sm-5">
-								<input type="text" class="form-control" id="id" name="id" placeholder="아이디를 입력하세요" />
+								<select class="form-control" id="category" name="category">
+									<option>선택</option>
+									<option>한식</option>
+									<option>중식</option>
+									<option>일식</option>
+									<option>양식</option>
+									<option>분식</option>
+									<option>패스트푸드</option>
+									<option>기타</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label" for="time">영업시간</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" id="time" name="time" placeholder="영업시간" />
 							</div>
 						</div>
 						
+						<div class="form-group">
+							<label class="col-sm-4 control-label" for="menu">메뉴</label>
+							<div class="col-sm-5">
+								<textarea class="form-control" rows="6" id="menu" name="menu" style="resize:none"></textarea>
+							</div>
+						</div>
+					    
+						
+						<div class="form-group">
+							<label class="col-sm-4 control-label" for="intro">소개글</label>
+							<div class="col-sm-5">
+								<textarea class="form-control" rows="6" style="resize:none" id="intro" name="intro"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label" for="time">이미지</label>
+								<div class="col-sm-5">
+							        <div class="input_wrap">
+						            	<a href="javascript:" onclick="fileUploadAction();" class="my_button btn btn-info">이미지 업로드</a>
+							            <input type="file" class="form-control" id="input_imgs" style="display: none" multiple/>
+							        </div>
+							    <div>
+						    	    <div class="imgs_wrap">
+						        	    <span><output id="img"></output></span>
+						        	</div>
+						    	</div>
+							</div>
+						</div>
 					</form>
 					<div align="center">
 		                <button id="prev-1" class="btn btn-primary btn-lg">prev</button>
-		                <button id="next-3" class="btn btn-primary btn-lg">next</button>
+		                <button id="next-3" class="btn btn-primary btn-lg" >next</button>
 		            </div>
 	            </div>
 	        </div>
@@ -145,9 +205,29 @@
 	    <div class="row setup-content" id="step-3">
 	        <div class="col-xs-12">
 	            <div class="col-md-12 well">
-	                <h1>개인정보</h1>
+	                <h1>예약관련</h1>
 	                <hr />
-	                	
+	                <form id="form"  class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-4 control-label" for="id">아이디</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" id="id" name="id" placeholder="아이디를 입력하세요" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label" for="id">카테고리</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" id="id" name="id" placeholder="아이디를 입력하세요" />
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-4 control-label" for="id">이미지</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" id="id" name="id" placeholder="아이디를 입력하세요" />
+							</div>
+						</div>
+					</form>	
 					<div align="center">
 						<button id="prev-2" class="btn btn-primary btn-lg">prev</button>
 	                	<button id="next-4" class="btn btn-primary btn-lg">next</button>
@@ -159,11 +239,80 @@
 	
 	<%@ include file="footer.jsp" %>
 	
-	<script src="resources/js/jquery-1.11.1.js"></script>
+	<script src="resources/js/jquery-3.2.1.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/jquery.MultiFile.min.js"></script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2028d6af91e6cdd61e23fc95d8e4dcf4&libraries=services"></script>
 	<script>
+	
+		// 이미지 정보들을 담을 배열
+		var sel_files = [];
+		/*$(".imgs_wrap").empty(); */
+	    $(document).ready(function() {
+	        $("#input_imgs").on("change", handleImgFileSelect);
+	    });
+	
+	    function fileUploadAction() {
+	        console.log("fileUploadAction");
+	        $("#input_imgs").trigger('click');
+	    }
+	    function handleImgFileSelect(e) {
+	        // 이미지 정보들을 초기화
+	        //sel_files = [];
+	        /* $(".imgs_wrap").empty(); */
+	        var files = e.target.files;
+	        var filesArr = Array.prototype.slice.call(files);
+	        var index = 0;
+	        filesArr.forEach(function(f) {
+	            if(!f.type.match("image.*")) {
+	                alert("이미지 파일만 첨부 가능합니다.");
+	                return;
+	            }
+	            sel_files.push(f);
+	            var reader = new FileReader();
+	            reader.onload = function(e) {
+	                var html = "<a href=\"javascript:void(0);\" onclick=\"deleteImageAction("+index+")\" id=\"img_id_"+index+"\"><img src=\"" + e.target.result + "\" data-file='"+f.name+"' class='selProductFile' title='Click to remove'></a>";
+	                $(".imgs_wrap").append(html);
+	                index++;
+	            }
+	            reader.readAsDataURL(f);
+	        });
+	    }
+	
+	    function deleteImageAction(index) {
+	        console.log("index : "+index);
+	        console.log("sel length : "+sel_files.length);
+	        sel_files.splice(index, 1);
+	        var img_id = "#img_id_"+index;
+	        $(img_id).remove(); 
+	    }
+	
+		function fileUploadAction() {
+	        console.log("fileUploadAction");
+	        $("#input_imgs").trigger('click');
+		}
+			function submitAction() {
+	        console.log("업로드 파일 갯수 : "+sel_files.length);
+	        var data = new FormData();
+	
+	        for(var i=0, len=sel_files.length; i<len; i++) {
+	            var name = "image_"+i;
+	            data.append(name, sel_files[i]);
+	        }
+	        data.append("image_count", sel_files.length);
+	        
+	        if(sel_files.length < 1) {
+	            alert("한개이상의 파일을 선택해주세요.");
+	            return;
+	        }
+	        if(sel_files.length > 10) {
+	            alert("이미지 첨부는 최대 10개 까지 가능합니다.");
+	            return false;
+	        }
+	    }	
+		
+		
 		$(document).ready(function() {
 		    
 		    var navListItems = $('ul.setup-panel li a'),
@@ -193,6 +342,10 @@
 		        $('ul.setup-panel li a[href="#step-2"]').trigger('click');
 		    });
 		    $('#next-3').on('click', function(e) {
+		    	if(sel_files.length > 10) {
+	                alert("이미지 첨부는 최대 10개 까지 가능합니다.");
+	                return false;
+	            }
 		        $('ul.setup-panel li:eq(2)').removeClass('disabled');
 		        $('ul.setup-panel li a[href="#step-3"]').trigger('click');
 		    });
@@ -294,8 +447,9 @@
 	            }
 	        }).open();
 	    }
-	</script>
-	
-	
+
+
+       
+    </script>
 </body>
 </html>
