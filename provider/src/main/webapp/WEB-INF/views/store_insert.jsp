@@ -472,7 +472,7 @@
             $('.btnAdd').click (function () {
             	if(aaa.length<5){
             		$('.buttons').append (                        
-                            '<div class="form-inline" style="margin-bottom:5px">' +
+                            '<div class="form-inline del" style="margin-bottom:5px">' +
                             	'<input type="text" class="form-control" style="width:40%" name="aaa[]"> ' +
                           		'<input type="text" class="form-control" style="width:40%" name="bbb[]"> ' +
                             	'<input type="button" class="btnRemove btn btn-danger" value="삭제"> ' +
@@ -487,10 +487,11 @@
             	
                  // end append                            
                 $('.btnRemove').on('click', function () { 
-                    $(this).prev().remove(); // 
+                   /*  $(this).prev().remove(); // 
                     $(this).prev().remove(); // 
                     $(this).next ().remove(); // 
-                    $(this).remove (); // remove the button
+                    $(this).remove (); // remove the button */
+                    $('.del').eq($(this)).remove ();
                     aaa.splice($(this),1);
                 });
             }); // end click                                            
