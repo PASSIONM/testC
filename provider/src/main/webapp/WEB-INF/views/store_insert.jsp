@@ -169,11 +169,16 @@
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="menu">메뉴</label>
 							<div class="col-sm-5">
-								<textarea class="form-control" rows="6" id="menu" name="menu" style="resize:none"></textarea>
+								<div class="buttons">      
+									<div class="form-inline" style="margin-bottom:5px">
+				      	  				<input type="text" class="form-control" style="width:40%" name="aaa[]">
+				      	  				<input type="text" class="form-control" style="width:40%" name="bbb[]">
+				      	  				<input type="button" class="btnAdd btn btn-success" value="추가">
+				      	  			</div>        
+				     			</div>
 							</div>
 						</div>
-					    
-						
+
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="intro">소개글</label>
 							<div class="col-sm-5">
@@ -195,6 +200,18 @@
 							</div>
 						</div>
 					</form>
+					
+					<!-- <form action="test.do" method="post">
+				            <div class="buttons">      
+									<div class="form-inline" style="margin-bottom:5px">
+				      	  				<input type="text" class="form-control" style="width:30%" name="aaa[]">
+				      	  				<input type="text" class="form-control" style="width:30%" name="bbb[]">
+				      	  				<input type="button" class="btnAdd btn btn-success" value="추가">
+				      	  			</div>        
+				     			</div>
+				        <input type="submit" id="add" value="전송">
+					</form> -->
+					
 					<div align="center">
 		                <button id="prev-1" class="btn btn-primary btn-lg">prev</button>
 		                <button id="next-3" class="btn btn-primary btn-lg" >next</button>
@@ -447,9 +464,38 @@
 	            }
 	        }).open();
 	    }
-
-
-       
     </script>
+    
+	<script>            
+        $(document).ready (function () {
+        	var aaa = [];
+            $('.btnAdd').click (function () {
+            	if(aaa.length<5){
+            		$('.buttons').append (                        
+                            '<div class="form-inline" style="margin-bottom:5px">' +
+                            	'<input type="text" class="form-control" style="width:40%" name="aaa[]"> ' +
+                          		'<input type="text" class="form-control" style="width:40%" name="bbb[]"> ' +
+                            	'<input type="button" class="btnRemove btn btn-danger" value="삭제"> ' +
+                            '</div>'
+                        );
+            		aaa = $('input[name="aaa[]"').toArray();
+            	}
+            	else{
+                	alert("최대 5개까지 추가 가능합니다.");
+                	return false;
+            	}
+            	
+                 // end append                            
+                $('.btnRemove').on('click', function () { 
+                    $(this).prev().remove(); // 
+                    $(this).prev().remove(); // 
+                    $(this).next ().remove(); // 
+                    $(this).remove (); // remove the button
+                    aaa.splice($(this),1);
+                });
+            }); // end click                                            
+        }); // end ready        
+    </script>
+
 </body>
 </html>
