@@ -185,7 +185,7 @@
 								<textarea class="form-control" rows="6" style="resize:none" id="intro" name="intro"></textarea>
 							</div>
 						</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label class="col-sm-4 control-label" for="time">이미지</label>
 								<div class="col-sm-5">
 							        <div class="input_wrap">
@@ -198,10 +198,23 @@
 						        	</div>
 						    	</div>
 							</div>
+						</div> -->
+						
+						<div class="form-group">
+							<label class="col-sm-4 control-label" for="time">이미지</label>
+								<div class="col-sm-5">
+							        <div class="input_wrap">
+						            	<input type="file" id="files" multiple />
+							        </div>
+							    <div>
+						    	    <div class="imgs_wrap">
+						        	    <output id="list"></output>
+						        	</div>
+						    	</div>
+							</div>
 						</div>
 					</form>
-					
-					<!-- <form action="test.do" method="post">
+					<!-- <form action="test.do" method="post" enctype="multipart/form-data">
 				            <div class="buttons">      
 									<div class="form-inline" style="margin-bottom:5px">
 				      	  				<input type="text" class="form-control" style="width:30%" name="aaa[]">
@@ -209,7 +222,22 @@
 				      	  				<input type="button" class="btnAdd btn btn-success" value="추가">
 				      	  			</div>        
 				     			</div>
-				        <input type="submit" id="add" value="전송">
+				     			
+				     	<div class="form-group">
+							<label class="col-sm-4 control-label" for="time">이미지</label>
+								<div class="col-sm-5">
+							        <div class="input_wrap">
+						            	<input type="file" id="files" multiple />
+							        </div>
+							    <div>
+						    	    <div class="imgs_wrap">
+						        	    <output id="list"></output>
+						        	</div>
+						    	</div>
+							</div>
+						</div>
+				     	
+				        <input type="submit" value="전송">
 					</form> -->
 					
 					<div align="center">
@@ -289,27 +317,32 @@
 	            sel_files.push(f);
 	            var reader = new FileReader();
 	            reader.onload = function(e) {
-	                var html = "<a href=\"javascript:void(0);\" onclick=\"deleteImageAction("+index+")\" id=\"img_id_"+index+"\"><img src=\"" + e.target.result + "\" data-file='"+f.name+"' class='selProductFile' title='Click to remove'></a>";
+	                //var html = "<a href=\"javascript:void(0);\" onclick=\"deleteImageAction("+index+")\" id=\"img_id_"+index+"\"><img src=\"" + e.target.result + "\" data-file='"+f.name+"' class='selProductFile' title='Click to remove'></a>";
+	                var html = "<a href=\"javascript:void(0);\" id=\"img_id_"+index+"\">"+
+	                			"<img src=\"" + e.target.result + "\" data-file='"+f.name+"' class='selProductFile'></a>";
 	                $(".imgs_wrap").append(html);
 	                index++;
+	                
+	                
+	                //html.onclick = function(){document.getElementById('img').removeChild(this)};
 	            }
 	            reader.readAsDataURL(f);
 	        });
 	    }
 	
-	    function deleteImageAction(index) {
+	    /* function deleteImageAction(index) {
 	        console.log("index : "+index);
 	        console.log("sel length : "+sel_files.length);
 	        sel_files.splice(index, 1);
 	        var img_id = "#img_id_"+index;
 	        $(img_id).remove(); 
-	    }
+	    } */
 	
 		function fileUploadAction() {
 	        console.log("fileUploadAction");
 	        $("#input_imgs").trigger('click');
 		}
-			function submitAction() {
+		/* function submitAction() {
 	        console.log("업로드 파일 갯수 : "+sel_files.length);
 	        var data = new FormData();
 	
@@ -327,7 +360,7 @@
 	            alert("이미지 첨부는 최대 10개 까지 가능합니다.");
 	            return false;
 	        }
-	    }	
+	    } */
 		
 		
 		$(document).ready(function() {
@@ -469,6 +502,7 @@
 	<script>            
         $(document).ready (function () {
         	var aaa = [];
+
             $('.btnAdd').click (function () {
             	if(aaa.length<5){
             		$('.buttons').append (                        
@@ -487,16 +521,65 @@
             	
                  // end append                            
                 $('.btnRemove').on('click', function () { 
-                   /*  $(this).prev().remove(); // 
-                    $(this).prev().remove(); // 
-                    $(this).next ().remove(); // 
-                    $(this).remove (); // remove the button */
-                    $('.del').eq($(this)).remove ();
+                    $(this).parent().remove (); //
                     aaa.splice($(this),1);
                 });
             }); // end click                                            
         }); // end ready        
     </script>
+	<script type="text/javascript">
+		var array = [];
+		var index = 0;
+		function handleFileSelect(evt) {
+		    var files = evt.target.files;
+	        //var filesArr = Array.prototype.slice.call(files);
+		    
+		    
+		    
+		    // Loop through the FileList and render image files as thumbnails.
+		    for (var i = 0, f; f = files[i]; i++) {
+	
+		      // Only process image files.
+		      if (!f.type.match('image.*')) {
+		        continue;
+		      }
+				//array.push(f);
+		      var reader = new FileReader();
+	
+		      // Closure to capture the file information.
+		      reader.onload = (function(theFile) {
+		        return function(e) {
+		          // Render thumbnail.
+		          var span = document.createElement('span');
+		          
+		          span.innerHTML = 
+		          [
+		            '<img name="imgs[]" style="height: 75px; border: 1px solid #000; margin: 5px" src="', 
+		            e.target.result,
+		            '" title="', escape(theFile.name), 
+		            '"/>'
+		          ].join('');
+		          //index++;
+		          //array = push(f).toArray();
+		          
+		          document.getElementById('list').insertBefore(span, null);
+		          
+		          span.onclick = function(){document.getElementById('list').removeChild(this)};
+		          
+		          //array.splice(index,1);
+		        };
+		      })(f);
+		      
+		      // Read in the image file as a data URL.
+		      reader.readAsDataURL(f);
+		      
+		     // console.log(array.length);
+		      //console.log(array);
+		    }
+		  }
 
+		  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+	</script>
+	
 </body>
 </html>
