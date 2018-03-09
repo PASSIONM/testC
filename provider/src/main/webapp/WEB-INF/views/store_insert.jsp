@@ -1,5 +1,6 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page session="false"%>
 <!DOCTYPE html>
 <html>
@@ -200,22 +201,29 @@
 							</div>
 						</div> -->
 						
-						<div class="form-group">
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+					</form>
+					
+					<form action="test.do" method="post" >
+					<div class="form-group">
 							<label class="col-sm-4 control-label" for="time">이미지</label>
 								<div class="col-sm-5">
-							        <div class="input_wrap">
-						            	<input type="file" id="files" multiple />
-							        </div>
-							    <div>
-						    	    <div class="imgs_wrap">
-						        	    <output id="list"></output>
-						        	</div>
-						    	</div>
+					            	<input type="file" id="files" multiple />
+								    <div>
+						        	    <output class='list1' id="list"></output>
+							    	</div>
+								</div>
 							</div>
-						</div>
-					</form>
-					<!-- <form action="test.do" method="post" enctype="multipart/form-data">
-				            <div class="buttons">      
+				           <!--  <div class="buttons">      
 									<div class="form-inline" style="margin-bottom:5px">
 				      	  				<input type="text" class="form-control" style="width:30%" name="aaa[]">
 				      	  				<input type="text" class="form-control" style="width:30%" name="bbb[]">
@@ -235,10 +243,10 @@
 						        	</div>
 						    	</div>
 							</div>
-						</div>
+						</div> -->
 				     	
 				        <input type="submit" value="전송">
-					</form> -->
+					</form>
 					
 					<div align="center">
 		                <button id="prev-1" class="btn btn-primary btn-lg">prev</button>
@@ -392,10 +400,10 @@
 		        $('ul.setup-panel li a[href="#step-2"]').trigger('click');
 		    });
 		    $('#next-3').on('click', function(e) {
-		    	if(sel_files.length > 10) {
-	                alert("이미지 첨부는 최대 10개 까지 가능합니다.");
+		    	/* if(('.imgs').length > 5) {
+	                alert("이미지 첨부는 최대 5개 까지 가능합니다.");
 	                return false;
-	            }
+	            } */
 		        $('ul.setup-panel li:eq(2)').removeClass('disabled');
 		        $('ul.setup-panel li a[href="#step-3"]').trigger('click');
 		    });
@@ -456,29 +464,24 @@
 	                    // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
 	                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
 	                }
-	
 	                // 주소 정보를 해당 필드에 넣는다.
 	                document.getElementById("sample5_address").value = fullAddr;
 	                // 주소로 상세 정보를 검색
 	                geocoder.addressSearch(data.address, function(results, status) {
 	                    // 정상적으로 검색이 완료됐으면
 	                    if (status === daum.maps.services.Status.OK) {
-	
 	                        var result = results[0]; //첫번째 결과의 값을 활용
-	
 	                        // 해당 주소에 대한 좌표를 받아서
 	                        var coords = new daum.maps.LatLng(result.y, result.x);
 	                        // 지도를 보여준다.
 	                        mapContainer.style.display = "block";
 	                        map.relayout();
 	                        
-	                        
 	                        // 결과값으로 받은 위치를 마커로 표시합니다
 	                        var marker = new daum.maps.Marker({
 	                            map: map,
 	                            position: coords
 	                        });
-								                        
 	                        // 인포윈도우로 장소에 대한 설명을 표시합니다
 	                        var infowindow = new daum.maps.InfoWindow({
 	                            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+extraAddr+'</div>'
@@ -527,31 +530,21 @@
             }); // end click                                            
         }); // end ready        
     </script>
-	<script type="text/javascript">
-		var array = [];
-		var index = 0;
+	<!-- <script type="text/javascript">
 		function handleFileSelect(evt) {
 		    var files = evt.target.files;
-	        //var filesArr = Array.prototype.slice.call(files);
-		    
-		    
-		    
 		    // Loop through the FileList and render image files as thumbnails.
 		    for (var i = 0, f; f = files[i]; i++) {
-	
 		      // Only process image files.
 		      if (!f.type.match('image.*')) {
 		        continue;
 		      }
-				//array.push(f);
 		      var reader = new FileReader();
-	
 		      // Closure to capture the file information.
 		      reader.onload = (function(theFile) {
 		        return function(e) {
 		          // Render thumbnail.
 		          var span = document.createElement('span');
-		          
 		          span.innerHTML = 
 		          [
 		            '<img name="imgs[]" style="height: 75px; border: 1px solid #000; margin: 5px" src="', 
@@ -559,27 +552,76 @@
 		            '" title="', escape(theFile.name), 
 		            '"/>'
 		          ].join('');
-		          //index++;
-		          //array = push(f).toArray();
 		          
 		          document.getElementById('list').insertBefore(span, null);
-		          
 		          span.onclick = function(){document.getElementById('list').removeChild(this)};
-		          
 		          //array.splice(index,1);
 		        };
 		      })(f);
-		      
 		      // Read in the image file as a data URL.
 		      reader.readAsDataURL(f);
-		      
-		     // console.log(array.length);
-		      //console.log(array);
 		    }
 		  }
-
 		  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+	</script> -->
+	<script type="text/javascript">
+		
+	
+	
+	
+		function handleFileSelect(evt) {
+			var array = [];  
+			var files = evt.target.files;
+			//var filesArr = Array.prototype.slice.call(files);
+				
+			// Loop through the FileList and render image files as thumbnails.
+			for (var i = 0, f; f = files[i]; i++) {
+				
+				// Only process image files.
+				if (!f.type.match('image.*')) {
+					continue;
+				}
+				array.push(f);
+				var reader = new FileReader();
+				
+				// Closure to capture the file information.
+				reader.onload = (function(theFile) {
+					return function(e) {
+						// Render thumbnail.
+						var span = document.createElement('span');
+						span.setAttribute('class', 'list3');
+						span.innerHTML = 
+							[
+							/* '<img name="imgs[]" style="height: 75px; border: 1px solid #000; margin: 5px" src="', 
+							e.target.result,
+							'" title="', escape(theFile.name), 
+							'"/>' */
+							'<input value="123" name="imgs[]"/>'
+							].join('');
+						
+						document.getElementById('list').insertBefore(span, null);
+						if(span.onclick){
+							document.getElementById('list').removeChild(this);
+						}
+						
+						//span.onclick = function(){document.getElementById('list').removeChild(this)};
+						console.log($('.list3').length);
+					
+					};
+				
+				})(f);
+				
+				// Read in the image file as a data URL.
+				reader.readAsDataURL(f);
+				
+			}
+			
+	
+		}
+		
+		document.getElementById('files').addEventListener('change', handleFileSelect, false);  
 	</script>
+	
 	
 </body>
 </html>
